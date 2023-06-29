@@ -245,6 +245,8 @@ class PS2X {
     void reconfig_gamepad();
 	
 	unsigned char PS2data[21];
+    unsigned int last_buttons;
+    unsigned int buttons;
     volatile unsigned long t_last_att; // time since last ATT inactive
 
   private:
@@ -267,8 +269,6 @@ class PS2X {
     unsigned char _gamepad_shiftinout (char);
     void sendCommandString(byte*, byte);
     unsigned char i;
-    unsigned int last_buttons;
-    unsigned int buttons;
 
     /* pin I/O configuration, mostly relevant to software SPI support (except ATT which is used in both software and hardware SPI) */
     #if defined(HAVE_PORTREG_IO) // platform has port registers in input/output configuration (eg. AVR, STM32)
